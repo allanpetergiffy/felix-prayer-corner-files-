@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Felix Prayer Corner</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+    }
+    .prayer-box {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+    }
+    .prayer-box h2 {
+      margin-bottom: 0.5rem;
+    }
+    #counter {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    form {
+      margin-top: 2rem;
+    }
+    input {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      margin-right: 0.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #fff;
+      color: #2575fc;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+    li {
+      margin: 0.3rem 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>🙏 Prayer Corner for Felix</h1>
+  <p>Join us in praying for Felix to win the <strong>Book Mayestro Competition</strong>. 
+     May his talent, dedication, and creativity shine through!</p>
+  
+  <div class="prayer-box">
+    <h2>Our Father</h2>
+    <p>
+      Our Father, who art in heaven, hallowed be thy name;  
+      thy kingdom come; thy will be done on earth as it is in heaven.  
+      Give us this day our daily bread; and forgive us our trespasses,  
+      as we forgive those who trespass against us;  
+      and lead us not into temptation, but deliver us from evil. Amen.
+    </p>
+  </div>
+
+  <div class="prayer-box">
+    <h2>Hail Mary</h2>
+    <p>
+      Hail Mary, full of grace, the Lord is with thee.  
+      Blessed art thou among women, and blessed is the fruit of thy womb, Jesus.  
+      Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.
+    </p>
+  </div>
+
+  <div class="prayer-box">
+    <h2>Glory Be</h2>
+    <p>
+      Glory be to the Father, and to the Son, and to the Holy Spirit,  
+      as it was in the beginning, is now, and ever shall be,  
+      world without end. Amen.
+    </p>
+  </div>
+
+  <div class="prayer-box">
+    <h2>Main Prayer for Felix</h2>
+    <p>
+      Lord, bless Felix with wisdom, confidence, and success in the competition. 
+      May his efforts be rewarded and his journey inspire others. Amen.
+    </p>
+  </div>
+
+  <!-- Visitor Counter -->
+  <div id="counter">Loading prayer count...</div>
+
+  <!-- Prayer Form -->
+  <form id="prayerForm">
+    <input type="text" id="name" placeholder="Your name" required>
+    <button type="submit">Add Prayer</button>
+  </form>
+
+  <ul id="prayerList"></ul>
+
+  <script>
+    // Visitor Counter
+    fetch('https://api.countapi.xyz/hit/felix-prayer-corner/visits')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('counter').innerText = 
+          "🙏 Total Prayers: " + data.value;
+      });
+
+    // Prayer Form
+    document.getElementById('prayerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const list = document.getElementById('prayerList');
+      const item = document.createElement('li');
+      item.textContent = name + " prayed for Felix 🙏";
+      list.appendChild(item);
+      document.getElementById('name').value = "";
+    });
+  </script>
+</body>
+</html>

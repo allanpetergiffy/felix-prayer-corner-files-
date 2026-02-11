@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Felix Prayer Corner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    h1 {
+      color: #2575fc;
+    }
+    input, button {
+      padding: 0.5rem;
+      margin: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #2575fc;
+      color: white;
+      cursor: pointer;
+    }
+    #adminContent {
+      margin-top: 2rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Admin Access</h1>
+  <input type="password" id="adminPass" placeholder="Enter password">
+  <button onclick="checkPass()">Login</button>
+
+  <div id="adminContent" style="display:none;">
+    <h2>Prayer Submissions</h2>
+    <ul id="adminList">
+      <li>Feature coming soon: saved prayers will appear here.</li>
+    </ul>
+  </div>
+
+  <script>
+    function checkPass() {
+      const pass = document.getElementById('adminPass').value;
+      if(pass === "felix123") { // change this password
+        document.getElementById('adminContent').style.display = "block";
+      } else {
+        alert("Wrong password!");
+      }
+    }
+  </script>
+</body>
+</html>
