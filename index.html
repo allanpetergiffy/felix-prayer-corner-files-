@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Felix Prayer Corner v2</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      animation: fadeIn 3s ease-in-out;
+    }
+    .counter-box {
+      background: rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      animation: popIn 1.5s ease-in-out;
+    }
+    #prayBtn {
+      margin-top: 1rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      background: #ffcc00;
+      color: #1e3c72;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+    #prayBtn:hover {
+      transform: scale(1.1);
+      background: #ffd633;
+    }
+    #count {
+      font-size: 2rem;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🙏 Felix Prayer Corner</h1>
+  <p>Click the button below to join others in praying for Felix to win the <strong>Book Mayestro Competition</strong>.</p>
+
+  <div class="counter-box">
+    <button id="prayBtn">I Prayed for Felix 🙏</button>
+    <div id="count">0 people have prayed</div>
+  </div>
+
+  <script>
+    // Load count from localStorage
+    let prayerCount = parseInt(localStorage.getItem("prayerCount")) || 0;
+    document.getElementById("count").innerText = prayerCount + " people have prayed";
+
+    // Button click
+    document.getElementById("prayBtn").addEventListener("click", function() {
+      prayerCount++;
+      localStorage.setItem("prayerCount", prayerCount);
+      document.getElementById("count").innerText = prayerCount + " people have prayed";
+      alert("Thank you for praying for Felix! 🙏");
+    });
+  </script>
+</body>
+</html>
